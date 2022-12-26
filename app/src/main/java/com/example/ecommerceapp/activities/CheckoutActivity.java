@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -164,7 +165,9 @@ public class CheckoutActivity extends AppCompatActivity {
                                 .setPositiveButton("Pay Now", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
+                                        Intent intent = new Intent(CheckoutActivity.this, PaymentActivity.class);
+                                        intent.putExtra("orderCode", orderNumber);
+                                        startActivity(intent);
                                     }
                                 }).show();
                     }else{
