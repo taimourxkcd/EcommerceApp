@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.example.ecommerceapp.adapters.CartAdapter;
-import com.example.ecommerceapp.databinding.ActivityCartBinding;
+import com.example.ecommerceapp.databinding.ActivityCheckoutBinding;
 import com.example.ecommerceapp.model.Product;
 import com.hishd.tinycart.model.Cart;
 import com.hishd.tinycart.model.Item;
@@ -19,20 +16,21 @@ import com.hishd.tinycart.util.TinyCartHelper;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class CartActivity extends AppCompatActivity {
+public class CheckoutActivity extends AppCompatActivity {
 
-    ActivityCartBinding binding;
+
+    ActivityCheckoutBinding binding;
     CartAdapter adapter;
     ArrayList<Product> products;
 
-
-
+    double totalPrice = 0;
+    final int tax = 11;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCartBinding.inflate(getLayoutInflater());
+        binding = ActivityCheckoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         products = new ArrayList<>();
@@ -65,21 +63,11 @@ public class CartActivity extends AppCompatActivity {
         binding.cartList.setAdapter(adapter);
 
         binding.subtotal.setText(String.format("PKR %.2f", cart.getTotalPrice()));
-
-
-        binding.continueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CartActivity.this, CheckoutActivity.class));
-            }
-        });
-
-        binding.subtotal.setText(String.format("PKR %.2f", cart.getTotalPrice()));
-
+        totalPrice = (cart.getTotalPrice().doubleValue() * tax / 100) * cart.getTotalPrice().doubleValue();
+        binding.total.setText(String.format("PKR " + totalPrice));
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override

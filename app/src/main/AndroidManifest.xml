@@ -16,11 +16,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.CartActivity"
-            android:label="Shopping Cart"
-            android:exported="false"
+            android:name=".activities.CheckoutActivity"
+            android:label="Checkout"
             android:theme="@style/Theme.EcommerceApp.Actionbar"
-            >
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.CartActivity"
+            android:exported="false"
+            android:label="Shopping Cart"
+            android:theme="@style/Theme.EcommerceApp.Actionbar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

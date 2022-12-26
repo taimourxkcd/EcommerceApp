@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -59,6 +60,8 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cart.addItem(currentProduct, 1);
+                binding.addToCart.setEnabled(false);
+                binding.addToCart.setText("Added to cart");
             }
         });
     }
