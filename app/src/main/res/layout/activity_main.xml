@@ -72,12 +72,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoriesList"
                     android:layout_width="match_parent"
-                    android:layout_height="167dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp" />
 
             </androidx.cardview.widget.CardView>
