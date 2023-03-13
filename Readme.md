@@ -1,1 +1,1 @@
-![alt text](./images/home.jpg)
+![alt text](./images/home.png)
